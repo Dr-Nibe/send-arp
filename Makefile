@@ -1,7 +1,11 @@
-all: send-arp
+CC = gcc
+CFLAGS = -lpcap
+TARGET = send-arp
 
-send-arp: main.c
-		gcc -o send-arp main.c -l pcap
+all: $(TARGET)
+
+$(TARGET): send-arp.c
+		$(CC) -o $(TARGET) send-arp.c $(CFLAGS)
 
 clean:
-		rm send-arp
+		rm $(TARGET)
